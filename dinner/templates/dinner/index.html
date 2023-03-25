@@ -8,9 +8,13 @@
 
     <h2>Recipes</h2>
     <div>
-      {% for recipe in recipes %}
-      <p>{{recipe.name}}</p>
-      {% endfor %}
+      <ul>
+        {% for recipe in recipes %}
+        <li><a href="">{{recipe.name}}</a></li>
+        {% endfor %}
+      </ul>
     </div>
+
+    <button>New Recipe</button>
   </body>
 </html>
