@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cookery</title>
+  </head>
+  <body>
+    <h1>Cookery</h1>
+
+    <h2>Recipes</h2>
+    <div>
+      {% for recipe in recipes %}
+      <p>{{recipe.name}}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
