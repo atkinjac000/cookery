@@ -1,4 +1,6 @@
 from django.shortcuts import render
-
+from .models import Recipe
 def index(request):
-    return render()
+    recipes = Recipe.objects.all()
+
+    return render(request, "/dinner/index.html", {"recipes": recipes})
