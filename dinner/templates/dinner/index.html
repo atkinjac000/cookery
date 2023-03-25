@@ -8,9 +8,11 @@
 
     <h2>Recipes</h2>
     <div>
-      {% for recipe in recipes %}
-      <p>{{recipe.name}}</p>
-      {% endfor %}
+      <ol>
+        {% for recipe in recipes %}
+        <li><a href="">{{recipe.name}}</a></li>
+        {% endfor %}
+      </ol>
     </div>
   </body>
 </html>
