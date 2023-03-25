@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Recipe
+from random import randint
 
 def index(request):
     recipes = Recipe.objects.all()
@@ -28,3 +29,8 @@ def create_recipe(request):
         recipe = Recipe(name=name, instructions=instructions)
         recipe.save()
     return HttpResponseRedirect(reverse('dinner:index'))
+
+def random_id():
+    recipes = Recipe.objects.all()
+    random_recipe = randint(1, recipes.length)
+    return HttpResponseRedirect(reverse('dinner:detail', args=[random_recipe]))
