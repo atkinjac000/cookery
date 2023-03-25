@@ -30,7 +30,7 @@ def create_recipe(request):
         recipe.save()
     return HttpResponseRedirect(reverse('dinner:index'))
 
-def random_id():
+def random_id(request):
     recipes = Recipe.objects.all()
-    random_recipe = randint(1, recipes.length)
-    return HttpResponseRedirect(reverse('dinner:detail', args=[random_recipe]))
+    random_recipe = randint(0, len(recipes) - 1)
+    return HttpResponseRedirect(reverse('dinner:detail', args=[recipes[random_recipe].id]))
