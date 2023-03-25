@@ -25,5 +25,9 @@ the api.
 
 - index : Returns the HTML for the recipe list
 - new_recipe : Returns HTML for the form to put in a new recipe
+  - retrieve input from server
+    - name of recipe
+    - recipe ingredients
+    - recipe instructions
 - recipe_detail : Returns HTML for the details of a specific recipe
 
