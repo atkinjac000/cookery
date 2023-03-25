@@ -10,11 +10,11 @@
     <div>
       <ul>
         {% for recipe in recipes %}
-        <li><a href="">{{recipe.name}}</a></li>
+        <li><a href="{% url 'dinner:detail' recipe.id %}">{{recipe.name}}</a></li>
         {% endfor %}
       </ul>
     </div>
 
-    <button>New Recipe</button>
+    <a href="{% url 'dinner:new_recipe' %}">New Recipe</a>
   </body>
 </html>

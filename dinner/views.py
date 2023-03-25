@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Recipe
 
 def index(request):
@@ -16,3 +18,13 @@ def recipe_detail(request, recipe_id):
 
     return render(request, "dinner/recipe_detail.html", {"recipe": recipe_info})
 
+def create_recipe(request):
+    try:
+        name = request.POST['recipe_name']
+        instructions = request.POST['recipe_instructions']
+    except(KeyError):
+        return HttpResponseRedirect(reverse('dinner:index'))
+    else:
+        recipe = Recipe(name=name, instructions=instructions)
+        recipe.save()
+    return HttpResponseRedirect(reverse('dinner:index'))

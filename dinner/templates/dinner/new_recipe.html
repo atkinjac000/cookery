@@ -6,12 +6,13 @@
   <body>
     <h1>New Recipe</h1>
 
-    <form action="">
+    <form action="{% url 'dinner:create_recipe' %}" method="POST">
+      {% csrf_token %}
 
-      <input type="text" id="recipe-name">
       <label for="recipe-name">Name</label>
-      <input type="text" id="recipe-instructions">
+      <input type="text" name="recipe_name" id="recipe-name">
       <label for="recipe-instructions">Instructions</label>
+      <input type="text" name="recipe_instructions" id="recipe-instructions">
       <button type="submit">Add Recipe</button>
     </form>
 
