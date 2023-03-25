@@ -6,15 +6,14 @@
   <body>
     <h1>New Recipe</h1>
 
-    <form action="{% url 'dinner:create_recipe' %}" method="POST">
+    <form action="{% url 'dinner:create_recipe' %}" method="POST" id="create_form">
       {% csrf_token %}
 
       <label for="recipe-name">Name</label>
       <input type="text" name="recipe_name" id="recipe-name">
-      <label for="recipe-instructions">Instructions</label>
-      <input type="text" name="recipe_instructions" id="recipe-instructions">
       <button type="submit">Add Recipe</button>
     </form>
+    <textarea name="recipe_instructions" id="recipe_instructions" form="create_form" cols="30" rows="10"></textarea>
 
   </body>
 </html>
