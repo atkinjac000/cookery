@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,15 +6,18 @@
   </head>
   <body>
     <h1>New Recipe</h1>
-
-    <form action="{% url 'dinner:create_recipe' %}" method="POST" id="create_form">
-      {% csrf_token %}
-
-      <label for="recipe-name">Name</label>
-      <input type="text" name="recipe_name" id="recipe-name">
-      <button type="submit">Add Recipe</button>
-    </form>
+    <label for="recipe-name">Name</label>
+    <input type="text" name="recipe_name" id="recipe-name">
+    <div id="ingredient-inputs">
+      <button id="add-ingredient">Add Ingredient</button>
+      <select name="select-ingredient" id="select-ingredient">
+      </select>
+    </div>
+    <h4>Ingredients</h4>
+    <ul id="ingredient-list"></ul>
     <textarea name="recipe_instructions" id="recipe_instructions" form="create_form" cols="30" rows="10"></textarea>
+    <button type="submit">Add Recipe</button>
 
+    <script src="{% static 'dinner/new_recipe.js' %}"></script>
   </body>
 </html>

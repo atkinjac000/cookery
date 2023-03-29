@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Recipe
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
+from .models import Recipe, Ingredient
 from random import randint
 
 def index(request):
@@ -29,6 +31,17 @@ def create_recipe(request):
         recipe = Recipe(name=name, instructions=instructions)
         recipe.save()
     return HttpResponseRedirect(reverse('dinner:index'))
+
+def get_ingredients(request):
+    resp = []
+    try:
+        ingredients = Ingredient.objects.all()
+        for i in ingredients:
+            resp.append(i.name)
+
+    except (ObjectDoesNotExist):
+        ingredients = []
+    return JsonResponse({"ingredients": resp})
 
 def random_id(request):
     recipes = Recipe.objects.all()
